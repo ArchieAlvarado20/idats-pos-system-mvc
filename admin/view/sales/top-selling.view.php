@@ -29,7 +29,7 @@
                  <table id="myTable" class="table table-sm table-bordered table-striped table-hover bg-white mb-0 text-center">
                   <thead class="bg-light">
                   <tr>
-                    <th class="text-center">Id</th>
+                    <th class="text-center">#</th>
                     <th class="text-center">Pcode</th>
                     <th class="text-center">Barcode</th>
                     <th class="text-center">Description</th>

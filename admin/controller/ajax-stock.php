@@ -18,7 +18,7 @@ $raw_data = file_get_contents("php://input");
                         //search
                         $barcode = $obj['text'];
                         $text = "%".$obj['text']."%";
-                        $qry = "select * from tblproduct where description like :find || barcode = :barcode order by view desc limit 10";
+                        $qry = "select * from tblproduct where description like :find || barcode = :barcode order by view desc limit 20";
                         $row = $productClass->query($qry,['find'=>$text,'barcode'=>$barcode]); 
                     }else{
                         //get all

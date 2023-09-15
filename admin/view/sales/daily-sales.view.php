@@ -28,7 +28,7 @@
                       <div class="col-sm-3">
                           <ol class="float-sm-right">
                               <?php foreach($daily_sales as $count) {?>
-                            <h1>₱ <?= $count['total'] ?></h1>
+                            <h1>₱ <?= $count['total'] ?? "0" ?></h1>
                                 <?php } ?>
                           </ol>
                       </div>
@@ -61,7 +61,7 @@
                     </form>
                   
                 
-                <table id="myTable" class="table table-sm table-bordered table-striped table-hover bg-white mb-0 text-center">
+                <table id="myTable" class="myTable table table-sm table-bordered table-striped table-hover bg-white mb-0 text-center">
                   <thead class="bg-light">
                   <tr>
                     <th class="text-center">#</th>

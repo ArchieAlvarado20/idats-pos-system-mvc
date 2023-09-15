@@ -53,7 +53,7 @@
     <div class="col-10">
                      <div class="user-panel mt-2 mb-0 d-flex">
                                 <div class="image">
-                                    <img src="assets/img/archie.jpg" class="img-square elevation-2 mt-2" alt="User Image">
+                                    <img src="assets/img/user_female.jpg" class="img-square elevation-2 mt-2" alt="User Image">
                                 </div>
                                 <div class="info mt-2 text-white">
                                    <p><strong>CASHIER: <?=strtoupper(auth('name'))?></strong></p>
@@ -329,7 +329,7 @@
                             </div>
                         </td>
                         <td class="text-md"style="font-weight:bolder">₱&nbsp;${data.price}</td>
-                        <td class="text-md"style="font-weight:bolder"></td>
+                        <td class="text-md"style="font-weight:bolder">${((data.price) * (data.qty)).toFixed(2)}</td>
                         <td> <button onclick="clear_item(${index})" class="btn btn-danger btn-sm"><i class="fa fa-times"></i></button></td>
   
                     </tr>    
@@ -530,6 +530,15 @@
         data_type: "checkout",
         text: ITEM_NEW
     });
+    //open receipt page
+		print_receipt({
+			company:'Idats Store',
+			amount:amount,
+			change:CHANGE,
+			gtotal:GTOTAL,
+			data:ITEMS
+		});
+
     //clear items
     // ITEMS = [],
     // refresh_items_display();
@@ -540,6 +549,22 @@
         text: ""
     });
     }
+
+    
+	function print_receipt(obj)
+	{
+		var vars = JSON.stringify(obj);
+
+		RECEIPT_WINDOW = window.open('index.php?pg=print&vars='+vars,'printpage',"width=100px;");
+
+		setTimeout(close_receipt_window,2000);
+		
+	}
+ 
+ 	function close_receipt_window()
+ 	{
+ 		RECEIPT_WINDOW.close();
+ 	}
 
     send_data({
         data_type: "search",

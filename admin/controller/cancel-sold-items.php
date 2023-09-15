@@ -13,6 +13,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST" && $row){
            
             // show($_POST['t_qty']);
             // die;
+            date_default_timezone_set("Asia/Manila");
             $cancel = new Cancel();
             $_POST['date'] = date('Y-m-d');
             $_POST['time'] = date('H:i:sa');

@@ -14,6 +14,7 @@
   <!-- /.control-sidebar -->
 </div>
 
+
 <!-- jQuery -->
 <script src="plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
@@ -35,9 +36,14 @@
 <script src="assets/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="assets/js/demo.js"></script>
+<!-- sweet alert -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <!-- Page specific script -->
 <script src="assets/js/table.js"></script>
 <script src="assets/js/table1.js"></script>
+<!-- ChartJS -->
+<script src="plugins/chart.js/Chart.min.js"></script>
+
 
 
 

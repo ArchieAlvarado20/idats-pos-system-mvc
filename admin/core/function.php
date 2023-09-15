@@ -124,14 +124,15 @@ function crop($filename,$size = 400, $type = 'product'){
     return $cropped_file;
 }
 
-function get_transno()
+function get_trans_count()
 {
+    $date = date('Y-m-d');
     $num = 1;
     $db = new Database();
-    $rows = $db->query("select transno from tblcart order by id desc limit 1");
+    $rows = $db->query("select trans_count from tblcart where sdate = '$date' order by id desc limit 1");
 
     if(is_array($rows)){
-        $num = (int)$rows[0]['transno'] + 1;
+        $num = (int)$rows[0]['trans_count'] + 1;
     }
 
     return $num;

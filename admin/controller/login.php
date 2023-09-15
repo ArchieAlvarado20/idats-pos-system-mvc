@@ -12,15 +12,17 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                         aunthenticate($row[0]);
 
                         if(auth('role')=='admin'){
-                            redirect('home');
+                            if(auth('verify_status') == 1){
+                                redirect('home');
+                            }else{
+                                redirect('denied');
+                            }
                         }else{
                             if(auth('verify_status') == 1){
                                     redirect('pos');
                             }else{
                                 redirect('denied');
                             }
-                            
-                        
                         } 
                     }else{
                         $error['password'] = "Wrong password";

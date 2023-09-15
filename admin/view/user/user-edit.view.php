@@ -65,7 +65,7 @@ require_once view_path('partials/header');
                     <div class="mb-3 mt-1">
                       <label for="">Active/De-activate</label>
                           <br/>
-                          <input <?= set_value('verify_status', $row['verify_status'] == true ? 'checked' : '');?> type="checkbox" class="form-control text-danger" name="verify_status" style="width:30px;height:30px">
+                          <input <?=set_value('verify_status', $row['verify_status'] == true ? 'checked' : '');?> type="checkbox" class="form-control text-danger" name="verify_status" style="width:30px;height:30px">
                     </div>
                     <div class="row-sm-12 d-flex ">
                       <div class="col-sm-6">

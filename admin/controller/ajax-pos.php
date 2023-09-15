@@ -42,7 +42,7 @@ if(!empty($raw_data))
         {
             date_default_timezone_set("Asia/Manila");
             $data    = ($obj['text']);
-            $transno   = get_transno();
+            $trans_count   = get_trans_count();
             $user_id = auth('id');
             $date    = date("Y-m-d");
             $time = date("h:i:sa");
@@ -70,12 +70,14 @@ if(!empty($raw_data))
                     $arr['qty'] = $row['qty'];
                     $arr['price'] = $check['price'];
                     $arr['total'] = $row['qty'] * $check['price'];
-                    $arr['transno'] ='TR-'.$date_tr;
+                    $arr['transno'] = $date_tr;
                     $arr['sdate'] = $date;
                     $arr['stime'] = $time;
                     $arr['user_id'] = $user_id;
+                    $arr['trans_count'] = $trans_count;
 
-                    $qry = "insert into tblcart(transno,qty,price,total,sdate,stime,user_id,p_id,status)values(:transno,:qty,:price,:total,:sdate,:stime,:user_id,:p_id,:status)";
+
+                    $qry = "insert into tblcart(transno,qty,price,total,sdate,stime,user_id,p_id,status,trans_count)values(:transno,:qty,:price,:total,:sdate,:stime,:user_id,:p_id,:status,:trans_count)";
                     $db->query($qry,$arr);
 
                     $qry = "update tblproduct set view = view + 1 where id = :id limit 1";

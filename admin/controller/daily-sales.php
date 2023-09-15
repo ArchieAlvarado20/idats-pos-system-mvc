@@ -1,5 +1,6 @@
 <?php
 defined("ABSPATH") ? "" : die();
+$_SESSION['revenue'] = "";
 $tab = $_GET['pg'] ?? 'daily-sales';
     $date = date('Y-m-d');
     $saleClass = new Sales();
