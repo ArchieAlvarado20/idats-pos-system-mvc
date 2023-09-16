@@ -45,7 +45,7 @@ if(!empty($raw_data))
             $trans_count   = get_trans_count();
             $user_id = auth('id');
             $date    = date("Y-m-d");
-            $time = date("h:i:sa");
+            $time = date("H:i:sa");
             $date_tr = date("Ymd-His");
             $status = "Sold";
         

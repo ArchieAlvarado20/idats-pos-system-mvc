@@ -65,6 +65,10 @@
 		<?php endforeach;?>
 			<tr style="height: 10px;"></tr>
 		<tr>
+			<td class="d-flex row p-0"><div class="col">Total-items: </div><div class="col text-center"><?= $obj['count']?></div> </td>
+		</tr>
+
+		<tr>
 			<td class="d-flex row p-0"><div class="col">Total: </div><div class="col text-center"><?=number_format($obj['gtotal'],2)?></div> </td>
 		</tr>
 		<tr>

@@ -46,8 +46,9 @@
 
   <link rel="stylesheet" href="@sweetalert2/themes/dark/dark.css">
   <link rel="stylesheet" href="plugins/toastr/toastr.min.css">
-  
-  <title><?=esc(APP_NAME) ?></title>
+
+  <?php $tab = $_GET['pg'] ?? 'home'; ?>
+  <title><?=esc(APP_NAME) ?>&nbsp;(<?= $tab ?>) as of <?= date('F j, Y') ?></title>
 
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">

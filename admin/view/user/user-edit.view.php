@@ -29,13 +29,13 @@ require_once view_path('partials/header');
 
              <div class="mb-3">
                 <label for="">Email</label>
-                  <input value="<?=set_value('email',$row['email'])?>" type="email" class="form-control <?=!empty($error['email']) ? 'border-danger' : '' ;?>" name="email">
+                  <input value="<?=set_value('email',$row['email'])?>" type="email" class="form-control <?=!empty($error['email']) ? 'border-danger' : '' ;?>" name="email" readonly>
                   <?php if(!empty($error['email'])):?><small class="text-danger"><?=$error['email']?></small><?php endif; ?>
               </div>
 
               <div class="mb-3">
                 <label for="">Phone</label>
-                  <input value="<?=set_value('phone',$row['phone'])?>" type="text" class="form-control <?=!empty($error['phone']) ? 'border-danger' : '' ;?>" name="phone">
+                  <input value="<?=set_value('phone',$row['phone'])?>" type="number" class="form-control <?=!empty($error['phone']) ? 'border-danger' : '' ;?>" name="phone">
                   <?php if(!empty($error['phone'])):?><small class="text-danger"><?=$error['phone']?></small><?php endif; ?>
               </div>      
           

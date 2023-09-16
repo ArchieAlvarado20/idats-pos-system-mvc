@@ -44,23 +44,22 @@
 
   <link rel="stylesheet" href="@sweetalert2/themes/dark/dark.css">
   <link rel="stylesheet" href="plugins/toastr/toastr.min.css">
+    <!-- calculator-font -->
+    <link href='https://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet' type='text/css'>
   <body class="dark">
    <style>
     @import url("assets/css/modal.css");
    </style>
    
-   <div class="row d-flex" style="background-color: #141414;">
-    <div class="col-10">
-                     <div class="user-panel mt-2 mb-0 d-flex">
-                                <div class="image">
-                                    <img src="assets/img/user_female.jpg" class="img-square elevation-2 mt-2" alt="User Image">
+                     <div class="user-panel mt-2 mb-0 d-flex row px-4" style="background-color: #141414;">
+                                <div class="image row d-flex">
+                                    <img src="assets/img/user_male.jpg" class="img-square elevation-2 mt-1 mb-1" alt="User Image" >
+                                    <p class="col mt-3"><strong>CASHIER: <?=strtoupper(auth('name'))?></strong></p>
                                 </div>
-                                <div class="info mt-2 text-white">
-                                   <p><strong>CASHIER: <?=strtoupper(auth('name'))?></strong></p>
-                                </div>
+                                   <h1 class="js-gtotal text-success col text-right" style="font-family: 'Orbitron', sans-serif;font-weight:bolder; padding-right: 60px;">₱ 00.00</h1> 
                             </div>
-    </div>
-   <div class="col-2 mt-2 text-center"><h1 class="js-gtotal">₱ 00.00</h1>
+    
+   <div class="col-3 mt-2 text-center">
     </div>
    </div>
 <div class="row-sm-12 ms-2 d-flex mt-0 dark">
@@ -124,6 +123,7 @@
                             <th>Barcode</th>
                             <th>Description</th>
                             <th>Price</th>
+                            <th>Stocks</th>
                            
                         </tr>
                     </thead>
@@ -214,6 +214,7 @@
     var TOTAL = 0;
     var CHANGE = 0;
     var AMOUNT = 0;
+    var COUNT = 0;
 
     var main_input = document.querySelector(".js-search");
 
@@ -309,7 +310,8 @@
                             <td  style="cursor: pointer" index="${index}" class="text-center">${data.pcode}</td>
                             <td  style="cursor: pointer" index="${index}" class="text-center">${data.barcode}</td>
                             <td  style="cursor: pointer" index="${index}" class=" text-center">${data.description}</td>
-                            <td  style="cursor: pointer" index="${index}" class="fw-bold  text-center">${data.price}</td>
+                            <td  style="cursor: pointer" index="${index}" class="fw-bold text-center">${data.price}</td>
+                            <td  style="cursor: pointer" index="${index}" class="fw-bold text-center">${data.qty}</td>
                         </tr>
                                 <!-- end card -->
                                 `;
@@ -370,11 +372,13 @@
         var items_div = document.querySelector(".js-items");
         items_div.innerHTML = "";
         var grand_total = 0;
+        var count = 0;
 
        
         for (var i = ITEMS.length - 1; i >= 0; i--){
             items_div.innerHTML += item_html(ITEMS[i],i);
             grand_total += ITEMS[i].qty * ITEMS[i].price;
+            count += ITEMS[i].qty;
         }
 
         var gtotal_div = document.querySelector(".js-gtotal");
@@ -386,6 +390,8 @@
 
         var gtotal_mod = document.querySelector(".js-gtotal_change");
         gtotal_mod.innerHTML = "₱ " + grand_total.toFixed(2);
+
+        COUNT = count;
 
     }
     function change_qty(direction, e)
@@ -536,6 +542,7 @@
 			amount:amount,
 			change:CHANGE,
 			gtotal:GTOTAL,
+            count:COUNT,
 			data:ITEMS
 		});
 

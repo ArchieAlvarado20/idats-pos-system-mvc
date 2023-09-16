@@ -32,6 +32,7 @@ class User extends Model
                     if(filter_var($data['email'],FILTER_VALIDATE_EMAIL) == false){
                         $error['email'] = "Email is not valid";
                     }
+                    
                      //check role
                      if(empty($data['role'])){
                         $error['role'] = "Role is required!";

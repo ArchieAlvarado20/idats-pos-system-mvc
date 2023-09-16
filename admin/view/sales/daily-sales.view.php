@@ -34,7 +34,6 @@
                       </div>
                     </div>
                     <form action="" method="post">
-                    <?php date_default_timezone_set("Asia/Manila"); ?>
                             <div class="row d-flex mb-3">
                               <div class="col-sm-5"></div>
                                   <div class="col-sm-2">

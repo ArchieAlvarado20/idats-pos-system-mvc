@@ -15,11 +15,9 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
     if(empty($error)){
       if(empty($_POST['password'])){
         unset($_POST['password']);
-
       }else{
               $_POST['password'] = password_hash($_POST['password'], PASSWORD_DEFAULT );
       }
-
       $user->update($id,$_POST);   
 
       redirect('user');

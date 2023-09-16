@@ -8,7 +8,7 @@
 
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-secondary" style="font-weight: bolder;"> Today's Sales</h1>
+            <h1 class="m-0 text-secondary" style="font-weight: bolder;">Sales</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <!-- <ol class="breadcrumb float-sm-right">
@@ -33,7 +33,7 @@
                 <?php foreach($daily_sales as $count) {?>
               <h3>₱ <?= $count['total'] ?? 0 ?><sup style="font-size: 20px"></sup></h3>
                   <?php } ?>
-                <p>Sales</p>
+                <p>Sales (Today)</p>
               </div>
               <div class="icon">
                 <i class="ion ion-ios-paper"></i>
@@ -47,9 +47,9 @@
             <div class="small-box bg-success">
               <div class="inner">
                 <?php foreach($transaction as $count) {?>
-              <h3><?= $count['count'] ?><sup style="font-size: 20px"></sup></h3>
+              <h3><?= $count['count']?><sup style="font-size: 20px"></sup></h3>
                   <?php } ?>
-                <p>Transaction</p>
+                <p>Transaction (Today)</p>
               </div>
               <div class="icon">
                 <i class="ion ion-ios-paper"></i>
@@ -65,7 +65,7 @@
                 <?php foreach($cancel as $count) {?>
               <h3><?= $count['count'] ?><sup style="font-size: 20px"></sup></h3>
                   <?php } ?>
-                <p>Cancelled Transaction</p>
+                <p>Cancelled Transaction (Today)</p>
               </div>
               <div class="icon">
                 <i class="ion ion-ios-paper"></i>
@@ -73,8 +73,46 @@
               <a href="index.php?pg=cancelled-items" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
+
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-secondary">
+              <div class="inner">
+                <?php foreach($cashiers_duty as $cashier) {?>
+              <h3><?= $cashier['cashier'] ?><sup style="font-size: 20px"></sup></h3>
+                  <?php } ?>
+                <p>Cashier On Duty (Today)</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion ion-person"></i>
+              </div>
+              <a href="index.php?pg=user" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+
+              <!-- BAR CHART -->
+              <div class="card col-sm-6 m-1">
+              <div class="card-header bg-warning">
+                <h3 class="card-title text-white">Sales per Month</h3>
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                    <i class="fas fa-minus"></i>
+                  </button>
+                  <button type="button" class="btn btn-tool" data-card-widget="remove">
+                    <i class="fas fa-times"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="chart">
+                  <canvas id="barChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                </div>
+              </div>
+              <!-- /.card-body -->
+            </div>
+
         </div>
-        <div class="row container-fluid mb-3">
+        <div class="row container-fluid mb-3 mt-3">
           <h3 class="text-secondary " style="font-weight: bolder;">Products</h3>
         </div>
         <div class="row">
@@ -130,36 +168,10 @@
             </div>
           </div>
           <!-- ./col -->
-        </div>
-        <!-- /.row -->
-        <div class="row container-fluid mb-3">
-          <h3 class="text-secondary " style="font-weight: bolder;">User Accounts</h3>
-        </div>
-        <div class="row">
-          <div class="col-lg-3 col-6">
-              <!-- small box -->
-              <div class="small-box" style="background-color: orange; color:white" >
-              <div class="inner">
-                  <?php foreach($users as $user){?>
-                <h3><?=$user['user']?><sup style="font-size: 20px"></sup></h3>
-                    <?php } ?>
-                  <p>Staff and Admins</p>
-                </div>
-                <div class="icon">
-                  <i class="ion ion-person-add"></i>
-                </div>
-                <a href="index.php?pg=user" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-              </div>
-          </div>
-          <!-- ./col -->
-        </div>
-      </div>
-	   <!-- Footer -->
-    
-           <!-- DONUT CHART -->
-           <div class="card card-white col-sm-4">
-              <div class="card-header">
-                <h3 class="card-title">Top Selling (Top 15)</h3>
+                         <!-- DONUT CHART -->
+            <div class="card card-white col-sm-6 m-1">
+              <div class="card-header bg-warning">
+                <h3 class="card-title text-white">Top Selling Product (Top 5)</h3>
 
                 <div class="card-tools">
                   <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -175,7 +187,48 @@
               </div>
               <!-- /.card-body -->
             </div>
-     
+        </div>
+        <!-- /.row -->
+        <div class="row container-fluid mb-3 mt-3">
+          <h3 class="text-secondary " style="font-weight: bolder;">User Accounts</h3>
+        </div>
+        <div class="row">
+          <div class="col-lg-3 col-6">
+              <!-- small box -->
+              <div class="small-box bg-info" style="background-color: orange; color:white" >
+              <div class="inner">
+                  <?php foreach($admins as $admin){?>
+                <h3><?=$admin['admin']?><sup style="font-size: 20px"></sup></h3>
+                    <?php } ?>
+                  <p>Admins</p>
+                </div>
+                <div class="icon">
+                  <i class="ion ion-person-add"></i>
+                </div>
+                <a href="index.php?pg=user" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+              <!-- small box -->
+              <div class="small-box bg-success" style="background-color: orange; color:white" >
+              <div class="inner">
+                  <?php foreach($cashiers as $cashier){?>
+                <h3><?=$cashier['cashier']?><sup style="font-size: 20px"></sup></h3>
+                    <?php } ?>
+                  <p>Cashiers</p>
+                </div>
+                <div class="icon">
+                  <i class="ion ion-person-add"></i>
+                </div>
+                <a href="index.php?pg=user" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              </div>
+          </div>
+          <!-- ./col -->
+        </div>
+      </div>
+	   <!-- Footer -->
+        
        </section>
        <section>
                   .
@@ -189,23 +242,17 @@
 
 
   <script>
+ 
     //-------------
     //- DONUT CHART -
     //-------------
     // Get context with jQuery - using jQuery's .get() method.
     var donutChartCanvas = $('#donutChart').get(0).getContext('2d')
     var donutData        = {
-      labels: [
-          'Chrome',
-          'IE',
-          'FireFox',
-          'Safari',
-          'Opera',
-          'Navigator',
-      ],
+      labels: <?php echo json_encode($month);?>,
       datasets: [
         {
-          data: [700,500,400,600,300,100],
+          data: <?php echo json_encode($total);?>,
           backgroundColor : ['#f56954', '#00a65a', '#f39c12', '#00c0ef', '#3c8dbc', '#d2d6de'],
         }
       ]
@@ -221,6 +268,30 @@
       data: donutData,
       options: donutOptions
     })
-   
 
-  </script>
+//-------------
+    //- BAR CHART -
+    //-------------
+    const ctx = document.getElementById('barChart');
+
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: <?php echo json_encode($months);?>,
+      datasets: [{
+        label: 'Sales per Month',
+        data: <?php echo json_encode($totals);?>,
+        backgroundColor : ['#f56954', '#00a65a', '#f39c12', '#00c0ef', '#3c8dbc', '#d2d6de'],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+    
+</script>
